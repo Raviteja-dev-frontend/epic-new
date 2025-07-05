@@ -1,0 +1,321 @@
+/* Main Container */
+.epic-about {
+  background: linear-gradient(135deg, #400c70, #5a189a, #a88ce4);
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+/* Hero Section */
+.epic-about__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.epic-about__hero-text {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.epic-about__hero-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ca9953;
+  text-transform: uppercase;
+  animation: shadowMove 3s ease-in-out infinite;
+}
+
+.epic-about__highlight {
+  color: #ca9953;
+}
+
+.epic-about__hero-text p {
+  font-size: 1.2rem;
+  color: #e3dff2;
+  margin-top: 1rem;
+  max-width: 600px;
+}
+
+/* About Text Section */
+.epic_about_text {
+  width: 40%;
+  text-align: left;
+}
+
+.epic_about_text h1 {
+  font-size: 30px;
+  font-weight: bolder;
+  color: #dfba47;
+  margin-bottom: 1rem;
+}
+
+.epic_about_text p {
+  font-size: 1rem;
+  color: #f8f8f8;
+  line-height: 1.6;
+}
+
+/* Features Grid Section */
+.epic-about__features {
+  width: 100%;
+  display: flex;
+  gap: 30px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Card Grid */
+.card-fuctures {
+  width: 100%;
+  max-width:50%;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, auto);   /* 2 rows */
+  gap: 30px;
+  overflow: visible;
+}
+
+.card-fuctures .card-fuctures_item {
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #ffecb1, #d8b261);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  color: #400c70;
+  transition: all 0.4s ease-in-out;
+}
+
+.card-fuctures.card-fuctures_item:hover {
+  transform: scale(1.05) rotate(360deg);
+  background: linear-gradient(to bottom right, #ffd700, #ffecd2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Text inside Cards */
+.card-fuctures .card-fuctures_quantity {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4c2175;
+  margin-bottom: 8px;
+}
+
+.card-fuctures_text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  color: #5a189a;
+}
+
+/* Optional Custom Text Colors */
+.text--1 { color: #7b2cbf; }
+.text--2 { color: #ff007f; }
+.text--3 { color: #009f4d; }
+.text--4 { color: #c61aff; }
+
+.card-fuctures.card-fuctures_item svg {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  color: #ff007f;
+}
+.card-icon-1 {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  color: #ff007f;
+}
+.card-icon-2 {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+   color: #7b2cbf;
+  
+}
+.card-icon-3 {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  color: #c61aff;
+}
+.card-icon-4 {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+ color: #009f4d;
+}
+/* Contact Section */
+.epic-about__contact {
+  margin-top: 5rem;
+}
+
+.epic-about__contact h2 {
+  font-size: 2rem;
+ color: #f2ecef;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.epic-about__contact p {
+  font-size: 1.1rem;
+  color: #f2ecef;
+  margin: 0.3rem 0;
+}
+
+.epic-about__contact p:nth-child(odd) {
+    font-size: 14px;
+  color: #141313;
+  width: 100%;
+   font-weight: 500;
+}
+
+.epic-about__contact p:nth-child(even) {
+  color: #0d0d0d;
+   font-size: 14px;
+   font-weight: 500;
+   width: 100%;
+}
+
+/* Shadow Animation */
+@keyframes shadowMove {
+  0% { text-shadow: 0 0 10px #474226; }
+  50% { text-shadow: 0 0 20px #ab9aa3; }
+  100% { text-shadow: 0 0 10px #0a0c81; }
+}
+
+@media (min-width: 40px) and (max-width: 1023px) {
+.epic-about__features {
+  flex-direction: column;
+}
+.epic-about__hero-text { 
+  width: 100%;
+}
+.epic-about__hero-text p {
+  font-size: 1.2rem;
+  color: #e3dff2;
+  margin-top: 1rem;
+  max-width: 90%;
+}
+.epic-about__hero-text h1 {
+  font-size: 2rem;
+
+}
+.epic-about {
+  background: linear-gradient(135deg, #400c70, #5a189a, #a88ce4);
+  color: white;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+/* About Text Section */
+.epic_about_text {
+  width: 100%;
+  text-align: left;
+}
+.card-fuctures {
+  width: 100%;
+  max-width:100%;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, auto);   /* 2 rows */
+  gap: 30px;
+  overflow: visible;
+}
+}
+/* Responsive Design */
+/* @media (max-width: 768px) {
+  .epic_about_text {
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 15px;
+  }
+} */
+
+/* @media (max-width: 639px) {
+  .epic-about__hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .epic_about_text h1 {
+    font-size: 24px;
+  }
+
+  .epic-about__features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .epic_about_text {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    height: auto;
+    gap: 15px;
+  }
+
+  .card .item {
+    padding: 1.2rem;
+  }
+} */
+/* 
+@media (min-width: 640px) and (max-width: 1023px) {
+  .epic-about__hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .epic_about_text {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .card {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: auto;
+    gap: 20px;
+  }
+
+  .card .item {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 1281px) {
+  .epic-about__features {
+    display: flex;
+   
+  }
+
+  .epic_about_text {
+    width: 40%;
+    text-align: left;
+  }
+
+  .card {
+    width: 50%;
+    max-width: 400px;
+    justify-content: center;
+    height: 500px;
+  }
+} */
+.card-fuctures.card-fuctures_item:hover {
+  transform: scale(1.05); /* Removed rotate(360deg) */
+  background: linear-gradient(to bottom right, #ffd700, #ffecd2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
