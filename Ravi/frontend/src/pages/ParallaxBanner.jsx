@@ -1,6 +1,6 @@
 import React from "react";
 import "./ParallaxBanner.css"; // Ensure this CSS file exists
-import { assets } from "../assets/assets"; 
+import { assets } from "../assets/assets.js"; 
 
 const ParallaxBanner = () => {
   return (

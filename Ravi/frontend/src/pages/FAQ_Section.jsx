@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import "./Accordion.css";
-import { assets } from "../assets/assets";
+import { assets } from "../assets/assets.js";
 
 const FAQs = [
   { question: "What is EPIC MOMENTS?", answer: "EPIC MOMENTS is a custom photo gift shop where you can create personalized gifts with your favorite memories." },

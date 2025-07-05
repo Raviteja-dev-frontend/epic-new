@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
-import { assets } from '../assets/assets';
+import { assets } from '../assets/assets.js';
 import { useLocation } from 'react-router-dom';
 import './SearchBar.css'; // 👈 Make sure to import the CSS
 

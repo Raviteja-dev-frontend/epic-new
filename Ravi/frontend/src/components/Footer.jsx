@@ -11,7 +11,7 @@ import {
 import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import "./Footer.css";
-import { assets } from "../assets/assets";
+import { assets } from "../assets/assets.js";
 
 const Footer = () => {
   const [showMap, setShowMap] = useState(false);

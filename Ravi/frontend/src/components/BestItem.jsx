@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ShopContext } from '../context/ShopContext';
+import { ShopContext } from '../context/ShopContext.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaCheck, FaInfoCircle } from "react-icons/fa";
 import './bestcollections.css';
