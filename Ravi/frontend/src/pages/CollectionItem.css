@@ -193,7 +193,7 @@
 .collection-card-item {
   width: 95%;
 
-  min-width: 190px;
+  min-width: 180px;
   
 }
   .collection-card-wrapper {
@@ -221,6 +221,14 @@
   .collection-card-description {
     font-size: 12px;
   }
+  .collection-grid {
+   z-index: 0;
+  }
+  .collection-card-done{
+  font-size: 20px;
+padding: 20px;
+  margin-bottom: 10px;
+}
 }
 
 /* Medium screens (tablets) */
@@ -230,7 +238,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
-
+.collection_Card_right h1 {
+ font-size: 14px;
+}
   .collection-card-wrapper {
     width: 280px;
     height: 340px;
