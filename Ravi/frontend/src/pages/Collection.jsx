@@ -7,7 +7,7 @@ import axios from 'axios';
 import './filter.css';
 import './CollectionItem.css';
 
-const backendUrl = 'http://localhost:4000';
+const backendUrl = 'https://epic-moments.onrender.com';
 
 const Collection = () => {
   const { products, search, showSearch } = useContext(ShopContext);
