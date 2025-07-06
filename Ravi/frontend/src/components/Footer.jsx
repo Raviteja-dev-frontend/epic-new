@@ -39,12 +39,55 @@ const Footer = () => {
         {/* Logo + Social */}
         <div className="footer-logo d-flex flex-column align-items-start">
           <img src={assets.logo_epicmoments} alt="Epic-footer" className="mb-3" />
-          <div className="footer-social d-flex gap-3">
-            <a href="#"><FaFacebook /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaYoutube /></a>
-          </div>
+         <div className="footer-social d-flex gap-3">
+      {/* Facebook */}
+      { "https://www.facebook.com/share/1BuBjAUYk6/" && (
+        <a
+          href="https://www.facebook.com/share/1BuBjAUYk6/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <FaFacebook />
+        </a>
+      )}
+
+      {/* Instagram */}
+      { "https://www.instagram.com/epicmoments007" && (
+        <a
+          href="https://www.instagram.com/epicmoments007"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <FaInstagram />
+        </a>
+      )}
+
+      {/* Twitter - not shown if empty */}
+      { "" && (
+        <a
+          href=""
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Twitter"
+        >
+          <FaTwitter />
+        </a>
+      )}
+
+      {/* YouTube - not shown if empty */}
+      { "" && (
+        <a
+          href=""
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <FaYoutube />
+        </a>
+      )}
+    </div>
         </div>
 
         {/* About Section */}
