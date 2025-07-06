@@ -189,8 +189,7 @@
     left: 0;
     width: 100%;
     background: #fff;
-    z-index: 0;
-   
+   z-index: 0;
     padding: 10px 20px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
