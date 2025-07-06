@@ -663,9 +663,9 @@ justify-content: center;
     6px 6px 0px #1e052e;   /* Deep Purple Black */
 }
 .shop-title span {
-  letter-spacing: 8px;
+  letter-spacing: 4px;
   font-size: 3.2rem;
-  color:rgb(144, 112, 34) ;
+  color:#e6c46e;
 }
 
 
