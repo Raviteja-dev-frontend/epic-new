@@ -171,18 +171,7 @@ const Footer = () => {
               </span>
             </p>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <button
-                className="bg-white text-black px-3 py-1 rounded-sm text-xs hover:bg-gray-200 transition"
-                onClick={() => setShowMap(!showMap)}
-              >
-                {showMap ? "Hide Location" : "View Our Location"}
-              </button>
-            </motion.div>
+            
 
           </div>
         </div>
