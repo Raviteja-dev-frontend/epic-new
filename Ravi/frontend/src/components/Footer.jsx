@@ -7,6 +7,7 @@ import {
   FaYoutube,
   FaMapMarkerAlt,
   FaClock,
+  FaWhatsapp
 } from "react-icons/fa";
 import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
@@ -36,59 +37,57 @@ const Footer = () => {
     <footer className="footer text-white">
       <div className="footer-container d-flex flex-wrap justify-content-around gap-2">
 
-        {/* Logo + Social */}
-        <div className="footer-logo d-flex flex-column align-items-start">
-          <img src={assets.logo_epicmoments} alt="Epic-footer" className="mb-3" />
-         <div className="footer-social d-flex gap-3">
-      {/* Facebook */}
-      { "https://www.facebook.com/share/1BuBjAUYk6/" && (
-        <a
-          href="https://www.facebook.com/share/1BuBjAUYk6/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-        >
-          <FaFacebook />
-        </a>
-      )}
+  <div className="footer-logo d-flex flex-column align-items-center flex-nowrap text-center mx-auto">
+  <img src={assets.logo_epicmoments} alt="Epic-footer" className="mb-3" />
 
-      {/* Instagram */}
-      { "https://www.instagram.com/epicmoments007" && (
-        <a
-          href="https://www.instagram.com/epicmoments007"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-        >
-          <FaInstagram />
-        </a>
-      )}
+  <div className="footer-social d-flex flex-nowrap gap-3 justify-content-center">
+    {/* Facebook */}
+    <a
+      href="https://www.facebook.com/share/1BuBjAUYk6/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Facebook"
+      className="social-icon"
+    >
+      <FaFacebook />
+    </a>
 
-      {/* Twitter - not shown if empty */}
-      { "" && (
-        <a
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Twitter"
-        >
-          <FaTwitter />
-        </a>
-      )}
+    {/* Instagram */}
+    <a
+      href="https://www.instagram.com/epicmoments007"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      className="social-icon"
+    >
+      <FaInstagram />
+    </a>
 
-      {/* YouTube - not shown if empty */}
-      { "" && (
-        <a
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube"
-        >
-          <FaYoutube />
-        </a>
-      )}
-    </div>
-        </div>
+    {/* YouTube */}
+    <a
+      href="https://www.youtube.com/@epicmoments0504"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="YouTube"
+      className="social-icon"
+    >
+      <FaYoutube />
+    </a>
+
+    {/* WhatsApp */}
+    <a
+      href="https://wa.me/message/6NLUMW665UY7K1"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="WhatsApp"
+      className="social-icon"
+    >
+      <FaWhatsapp />
+    </a>
+  </div>
+</div>
+
+
 
         {/* About Section */}
         <div className="footer-section footer_about">
@@ -111,10 +110,11 @@ const Footer = () => {
         </div>
 
         {/* Dynamic Category List as Products */}
-<div className="footer-section ml-5">
+<div className="footer-section  footer_products">
   <h3 className="footer-title">Our Products</h3>
 
-  <div className="flex flex-row gap-8">
+<div className="flex flex-row gap-5 footer_products-1 pl-5">
+
     {Array.from({ length: 2 }).map((_, columnIndex) => (
       <div key={columnIndex} className="flex flex-col gap-2">
         {categoryList
@@ -140,9 +140,9 @@ const Footer = () => {
 
 
         {/* Address + Contact */}
-        <div className="footer-section">
+        <div className="footer-section footer_products">
           <h3 className="footer-title">Shop Address</h3>
-          <div className="footer-address space-y-2 text-sm text-gray-300">
+          <div className="footer-address space-y-2 text-sm text-gray-300  footer_products">
 
             <p className="flex items-center gap-2">
               <FaClock /> Mon - Sat: 9:00 AM – 8:00 PM
@@ -162,16 +162,27 @@ const Footer = () => {
               </a>
             </p>
 
-            <p className="flex items-start gap-2">
-              <FaMapMarkerAlt className="mt-1" />
-              <span>
-                Near Mudu Gullu, Opp. 3 Temples,<br />
-                Gullapalli, Main Road,<br />
-                Andhra Pradesh - 522309
-              </span>
-            </p>
+           <p className="flex items-start gap-2">
+  <FaMapMarkerAlt className="mt-1" />
+  <span style={{ textAlign: 'left' }}>
+    Near Mudu Gullu, Opp. 3 Temples,<br />
+    Gullapalli, Main Road,<br />
+    Andhra Pradesh - 522309
+  </span>
+</p>
 
-            
+            {/* <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <button
+                className="bg-white text-black px-3 py-1 rounded-sm text-xs hover:bg-gray-200 transition"
+                onClick={() => setShowMap(!showMap)}
+              >
+                {showMap ? "Hide Location" : "View Our Location"}
+              </button>
+            </motion.div> */}
 
           </div>
         </div>
