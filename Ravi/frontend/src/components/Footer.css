@@ -140,5 +140,20 @@
  
   /* margin-bottom: 30px; */
 }
+.footer_products {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* text-align: left; */
+  margin: 0 auto;
+  text-align: center;
+}
+.footer_products-1{
+margin: 0 auto;
+padding: auto;
+justify-content: center;
+align-items: center;
+margin-left: 2rem;
+}
 
 }
