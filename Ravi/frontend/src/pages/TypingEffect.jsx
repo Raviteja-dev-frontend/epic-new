@@ -10,7 +10,7 @@ const TypingEffect = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/category");
+        const res = await axios.get("https://epic-new-backend.onrender.com/api/category");
         if (res.data.success) {
           setCategoryList(res.data.categories);
         }
