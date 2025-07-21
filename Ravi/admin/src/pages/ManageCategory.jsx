@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 // Use your environment variable (Vite project)
-const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
+const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://epic-new-backend.onrender.com';
 
 const ManageCategory = () => {
   const [name, setName] = useState('');
