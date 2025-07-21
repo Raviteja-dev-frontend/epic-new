@@ -77,7 +77,3 @@ const CollectionItems = ({ id, image, name, price, description }) => {
 };
 
 export default CollectionItems;
-
-
-
-
