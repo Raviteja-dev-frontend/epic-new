@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets.js';
 import Title from '../components/Title';
-import CollectionItems from "./CollectionItems.jsx"
+import CollectionItems from "./CollectionItems.jsx";
 import axios from 'axios';
 import './filter.css';
 import './CollectionItem.css';
@@ -12,12 +12,13 @@ const backendUrl = 'http://localhost:4000';
 const Collection = () => {
   const { products, search, showSearch } = useContext(ShopContext);
 
-  const [showFilter, setShowFilter] = useState(false); // default hidden on mobile
+  const [showFilter, setShowFilter] = useState(false); // for mobile
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
-  const [sortType, setSortType] = useState('relavent');
+  const [sortType, setSortType] = useState('relevant');
   const [categoryList, setCategoryList] = useState([]);
 
+  // Fetch categories from backend
   useEffect(() => {
     const fetchCategoryList = async () => {
       try {
@@ -29,10 +30,10 @@ const Collection = () => {
         console.error("Error fetching categories:", err);
       }
     };
-
     fetchCategoryList();
   }, []);
 
+  // Toggle selected categories
   const toggleCategory = (e) => {
     const value = e.target.value;
     setCategory((prev) =>
@@ -42,6 +43,7 @@ const Collection = () => {
     );
   };
 
+  // Apply category and search filters
   const applyFilter = () => {
     let filtered = [...products];
 
@@ -60,6 +62,7 @@ const Collection = () => {
     setFilterProducts(filtered);
   };
 
+  // Apply sorting
   const sortProduct = () => {
     let sorted = [...filterProducts];
 
@@ -71,20 +74,27 @@ const Collection = () => {
         sorted.sort((a, b) => b.price - a.price);
         break;
       default:
-        applyFilter();
+        applyFilter(); // for "relevant" just apply filter without sorting
         return;
     }
 
     setFilterProducts(sorted);
   };
 
+  // Apply filters when dependencies change
   useEffect(() => {
     applyFilter();
   }, [category, search, showSearch, products]);
 
+  // Sort products when sort type changes
   useEffect(() => {
     sortProduct();
   }, [sortType]);
+
+  // Default filtered list to full products on load
+  useEffect(() => {
+    setFilterProducts(products);
+  }, [products]);
 
   return (
     <>
@@ -117,39 +127,37 @@ const Collection = () => {
 
         {/* Products Section */}
         <div className="product-area">
-          {/* Mobile filter toggle button */}
-
-          
-
+          {/* Header */}
           <div className="product-header">
             <button className="filter-toggle-btn" onClick={() => setShowFilter(true)}>
-            <img src={assets.dropdown_icon} alt="filter" style={{ width: "16px", marginRight: "5px" }} />
-            Filters
-          </button>
-            <h1> All Categeries</h1>
+              <img src={assets.dropdown_icon} alt="filter" style={{ width: "16px", marginRight: "5px" }} />
+              Filters
+            </button>
+            <h1>All Categories</h1>
             <select
+              value={sortType}
               onChange={(e) => setSortType(e.target.value)}
               className="sort-select"
             >
-              <option value="relavent">Sort by: Relevant</option>
+              <option value="relevant">Sort by: Relevant</option>
               <option value="low-high">Sort by: Low to High</option>
               <option value="high-low">Sort by: High to Low</option>
             </select>
           </div>
 
-        <div className="collection-grid">
-  {products.map((item, index) => (
-    <CollectionItems
-      key={index}
-      id={item._id}
-      image={item.image}
-      name={item.name}
-      price={item.price}
-      description={item.description}
-    />
-  ))}
-</div>
-
+          {/* Product Grid */}
+          <div className="collection-grid">
+            {filterProducts.map((item, index) => (
+              <CollectionItems
+                key={index}
+                id={item._id}
+                image={item.image}
+                name={item.name}
+                price={item.price}
+                description={item.description}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>

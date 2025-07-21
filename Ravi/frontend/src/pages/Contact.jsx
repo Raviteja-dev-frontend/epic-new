@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Contact.css";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
-import axios from "axios";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [showMap, setShowMap] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const formRef = useRef();
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -20,12 +20,18 @@ const Contact = () => {
     setStatus("Sending...");
 
     try {
-      const res = await axios.post(`${backendUrl}/api/enquiries`, formData);
-      setStatus(res.data.message || "Message sent successfully!");
+      const res = await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+      console.log("✅ Email sent:", res.status);
+      setStatus("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error(error);
-      setStatus("Error sending message. Please try again.");
+    } catch (err) {
+      console.error("❌ Email failed:", err);
+      setStatus("Failed to send message. Please try again.");
     }
   };
 
@@ -45,9 +51,7 @@ const Contact = () => {
           together! 🎨✨
         </p>
       </motion.div>
-      <div>
 
-      </div>
       <div className="contact-content">
         <motion.div
           className="contact-info"
@@ -69,11 +73,10 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-            Epic Moments
+              Epic Moments
             </a>
           </p>
           <p>
-
             <Mail size={20} />{" "}
             <a href="mailto:epicmoments27@gmail.com">epicmoments27@gmail.com</a>
           </p>
@@ -81,7 +84,9 @@ const Contact = () => {
             <Phone size={20} />{" "}
             <a href="tel:+917989466939">+91 7989466939</a>
           </p>
-          <p><MapPin size={30} /> near Mudu Gullu, Gullapalli, Andhra Pradesh 522309</p>
+          <p>
+            <MapPin size={30} /> near Mudu Gullu, Gullapalli, Andhra Pradesh 522309
+          </p>
           <button className="map-toggle" onClick={() => setShowMap(!showMap)}>
             {showMap ? "Hide Location" : "View Our Location"}
           </button>
@@ -115,7 +120,7 @@ const Contact = () => {
         transition={{ duration: 1 }}
       >
         <h2>💬 Send Us a Message</h2>
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"

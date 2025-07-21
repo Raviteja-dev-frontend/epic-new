@@ -46,7 +46,7 @@ const CollectionItems = ({ id, image, name, price, description }) => {
             {added && (
               <div className="collection_Card_right">
                 <div className="collection_Card_details">
-                  <h1>{name}</h1>
+                  <p>{name}</p>
                   <p>Added to your cart</p>
                 </div>
                 <div className="collection-card-done">

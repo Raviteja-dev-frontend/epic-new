@@ -85,11 +85,12 @@
 } */
 
 .hero-image-test {
-  width: 90%;
+  width: 100%;
   max-height: 80vh;
   object-fit: contain;
   border-radius: 15px;
-  mix-blend-mode: multiply;
+  mix-blend-mode: multiply; /* Optional for blending */
+  background-color: transparent;
 }
 
 /* Floating Gift Boxes */
@@ -316,4 +317,21 @@
 .hero-title_description {
   margin-bottom: 20px;
 }
+}
+
+.rocket-icon {
+  animation: floatUp 2s ease-in-out infinite;
+  margin-right: 10px;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

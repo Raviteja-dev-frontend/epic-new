@@ -1,12 +1,19 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ShopContext } from "../context/ShopContext";
+import "./AutoPlaySlider.css";
+
+const Skeleton = () => (
+  <div className="skeleton-loader" />
+);
 
 const AutoPlaySlider = () => {
   const sliderRef = useRef();
   const { slides } = useContext(ShopContext);
+
+  const [loadedMap, setLoadedMap] = useState({});
 
   const settings = {
     dots: false,
@@ -19,20 +26,34 @@ const AutoPlaySlider = () => {
     slidesToScroll: 1,
   };
 
+  useEffect(() => {
+    if (slides) {
+      const initialState = {};
+      slides.forEach((s) => {
+        initialState[s._id] = false;
+      });
+      setLoadedMap(initialState);
+    }
+  }, [slides]);
+
+  const handleLoad = (id) => {
+    setTimeout(() => {
+      setLoadedMap((prev) => ({ ...prev, [id]: true }));
+    }, 1500); // Minimum skeleton time
+  };
+
   return (
-    <div className="slider-container w-full max-h-[600px] overflow-hidden">
+    <div className="slider-container">
       <Slider ref={sliderRef} {...settings}>
         {slides && slides.length > 0 ? (
           slides.map((slide) => {
             const mediaUrl = slide?.image?.[0];
+            const isLoaded = loadedMap[slide._id];
 
             if (!mediaUrl) {
               return (
-                <div
-                  key={slide._id}
-                  className="w-full h-64 bg-gray-300 flex justify-center items-center"
-                >
-                  <p className="text-center">Media Missing</p>
+                <div key={slide._id} className="skeleton-loader">
+                  <p>Media Missing</p>
                 </div>
               );
             }
@@ -41,19 +62,16 @@ const AutoPlaySlider = () => {
             try {
               ext = new URL(mediaUrl).pathname.split(".").pop()?.toLowerCase();
             } catch (e) {
-              console.warn("Invalid media URL:", mediaUrl);
               return (
-                <div
-                  key={slide._id}
-                  className="w-full h-64 bg-gray-300 flex justify-center items-center"
-                >
-                  <p className="text-center">Invalid Media URL</p>
+                <div key={slide._id} className="skeleton-loader">
+                  <p>Invalid Media URL</p>
                 </div>
               );
             }
 
             return (
-              <div key={slide._id} className="slide-item w-full">
+              <div key={slide._id}>
+                {!isLoaded && <Skeleton />}
                 {["mp4", "webm"].includes(ext) ? (
                   <video
                     src={mediaUrl}
@@ -61,26 +79,29 @@ const AutoPlaySlider = () => {
                     loop
                     muted
                     playsInline
-                    className="w-full max-h-[600px] object-cover"
+                    onLoadedData={() => handleLoad(slide._id)}
+                    className={`media-slide ${isLoaded ? "" : "hidden"}`}
                     aria-label="Video Slide"
                   />
                 ) : ["jpg", "jpeg", "png", "gif", "webp"].includes(ext) ? (
                   <img
                     src={mediaUrl}
                     alt="Slide"
-                    className="w-full max-h-[600px] object-cover"
+                    loading="lazy"
+                    onLoad={() => handleLoad(slide._id)}
+                    className={`media-slide ${isLoaded ? "" : "hidden"}`}
                   />
                 ) : (
-                  <div className="w-full h-64 bg-gray-300 flex justify-center items-center">
-                    <p className="text-center">Unsupported Media Type</p>
+                  <div className="skeleton-loader">
+                    <p>Unsupported Media Type</p>
                   </div>
                 )}
               </div>
             );
           })
         ) : (
-          <div className="w-full h-64 bg-gray-300 flex justify-center items-center">
-            <p className="text-center">No Slides Available</p>
+          <div className="skeleton-loader">
+            <p>No Slides Available</p>
           </div>
         )}
       </Slider>

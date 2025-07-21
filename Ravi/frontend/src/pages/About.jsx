@@ -92,21 +92,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Contact Section */}
-      <motion.div
-        className="epic-about__contact"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <h2>Get in Touch</h2>
-        <p>📧 Email: epicmoments27@gmail.com</p>
-        <p>📱 Instagram: @epicmoments007</p>
-        <p>📍 Location:Near Mudu Gullu, Opp. 3 Temples,
-Gullapalli, Main Road,
-Andhra Pradesh - 522309</p>
 
-      </motion.div>
     </section>
   );
 };

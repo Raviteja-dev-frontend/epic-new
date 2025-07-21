@@ -26,29 +26,31 @@
     height: 200px;
   }
 }
- .screen-add_forer{
+.screen-add_forer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center; /* Center everything horizontally */
   justify-content: center;
-  align-items: flex-start;
-  gap: 80px;
   padding: 60px 30px;
   margin: 130px auto 0;
   width: 100%;
- 
-  border-radius: 20px;
-border-top-left-radius: 0px;
-border-bottom-right-radius: 0px;
-  /* Background image styling */
+  gap: 60px;
   background-image: url('../assets/stones_bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  /* Optional: Add overlay for better contrast with content */
   position: relative;
   z-index: 1;
 }
+.dignity-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+}
+
+
 
 
 .dignity-block {
@@ -256,6 +258,44 @@ width:220px;
 }
 }
 
+/* Fix: Large screen layout enhancements */
+@media (min-width: 1280px) {
+  .screen-add_forer {
+    width: 100%;
+    margin:auto 0;
+    padding: 80px 40px;
+    gap: 100px;
+  }
+
+  .screen-add_forer-title h2 {
+    font-size: 60px;
+    letter-spacing: 8px;
+  }
+
+  .screen-add_forer-title p {
+    font-size: 22px;
+    width: 70%;
+  }
+
+  .dignity-block {
+    width: 320px;
+    height: 420px;
+    padding: 36px;
+  }
+
+  .dignity-image img {
+    max-width: 220px;
+    height: 220px;
+  }
+
+  .h3_title {
+    font-size: 1.5rem;
+  }
+
+  .dignity-description p {
+    font-size: 1.05rem;
+  }
+}
 
 
 
@@ -663,9 +703,9 @@ justify-content: center;
     6px 6px 0px #1e052e;   /* Deep Purple Black */
 }
 .shop-title span {
-  letter-spacing: 8px;
+  letter-spacing: 4px;
   font-size: 3.2rem;
-  color:rgb(144, 112, 34) ;
+  color:#e6c46e;
 }
 
 

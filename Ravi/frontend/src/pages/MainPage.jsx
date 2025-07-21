@@ -14,47 +14,49 @@ import Slider_Comments from "./Slider_Comments.jsx"
 function MainPage() {
   return (
     <div className="main-page">
-      <div class="gold-divider"></div>
+      <div className="gold-divider"></div>
       <div className='Screen-2_slideing'>
         <Slider />
       </div>
-      <div className="screen-add_forer">
-        <div className="screen-add_forer-title">
-          <h2>Why Choose epic moments Gifts?</h2>
-          <p>We bring joy to your special moments with creative, custom-made gifts and exceptional service.</p>
-        </div>
+     <div className="screen-add_forer">
+  <div className="screen-add_forer-title">
+    <h2>Why Choose Epic Moments Gifts?</h2>
+    <p>We bring joy to your special moments with creative, custom-made gifts and exceptional service.</p>
+  </div>
 
-        {[
-          {
-            image: assets.present_1,
-            title: "Unique Custom Gifts",
-            desc: "Give your loved ones something truly special – fully personalized gifts made with heart and creativity.",
-          },
-          {
-            image: assets.present_2,
-            title: "Fast & Reliable Delivery",
-            desc: "We ensure your customized gifts reach you quickly and safely, right when you need them.",
-          },
-          {
-            image: assets.present_3,
-            title: "Wide Range of Options",
-            desc: "Explore a vast collection of gift items – from photo frames to mugs, cushions, and more, for every occasion.",
-          },
-        ].map((item, index) => (
-          <div className="dignity-block" key={index}>
-            <div className="dignity-image">
-              <img src={item.image} alt={item.title} />
-            </div>
-            <h3 className="h3_title">{item.title}</h3>
-            <div className="dignity-description">
-              <p>{item.desc}</p>
-            </div>
-          </div>
-        ))}
+  <div className="dignity-wrapper">
+    {[
+      {
+        image: assets.present_1,
+        title: "Unique Custom Gifts",
+        desc: "Give your loved ones something truly special – fully personalized gifts made with heart and creativity.",
+      },
+      {
+        image: assets.present_2,
+        title: "Fast & Reliable Delivery",
+        desc: "We ensure your customized gifts reach you quickly and safely, right when you need them.",
+      },
+      {
+        image: assets.present_3,
+        title: "Wide Range of Options",
+        desc: "Explore a vast collection of gift items – from photo frames to mugs, cushions, and more, for every occasion.",
+      },
+    ].map((item, index) => (
+      <div className="dignity-block" key={index}  data-aos="fade-up" data-aos-delay={index * 100}>
+        <div className="dignity-image">
+          <img src={item.image} alt={item.title} />
+        </div>
+        <h3 className="h3_title">{item.title}</h3>
+        <div className="dignity-description">
+          <p>{item.desc}</p>
+        </div>
       </div>
+    ))}
+  </div>
+</div>
 
       <TypingEffect />
-      <div className='Latest_div'>
+      <div className='Latest_div'  data-aos="fade-up">
         <LatestCollection />
       </div>
       <div>
@@ -76,12 +78,12 @@ function MainPage() {
             poster="/fallback-image.jpg"
           />
         </div>
-        <div className="founder-section">
+        <div className="founder-section" data-aos="fade-right"> 
           <h2 className="founder-title">Meet The Founder</h2>
           <div className="founder-content">
             <h3 className="founder-name">Anosh</h3>
             <p className="founder-description">
-              Mr. Anosh is the visionary founder and CEO of <strong>Epic Moments</strong>,
+              Mr. Anosh is the visionary founder of <strong>Epic Moments</strong>,
               a premium <strong>customized photo gifts</strong> brand.
             </p>
             <p className="founder-mission">

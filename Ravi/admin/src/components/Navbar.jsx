@@ -1,13 +1,44 @@
-import React from 'react'
-import {assets} from '../assets/assets'
+// components/Navbar.jsx
+import React, { useEffect } from 'react';
+import { assets } from '../assets/assets';
+import './nav-2.css';
+import { FiBell } from 'react-icons/fi';
 
-const Navbar = ({setToken}) => {
+const Navbar = ({ setToken, newOrdersCount }) => {
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar-container');
+      if (!navbar) return;
+      if (window.scrollY > lastScrollY) {
+        navbar.style.top = '-80px';
+      } else {
+        navbar.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className='flex items-center py-2 px-[4%] justify-between'>
-        <img className='w-[max(10%,80px)]' src={assets.logo} alt="" />
-        <button onClick={()=>setToken('')} className='bg-gray-600 text-white px-5 py-2 sm:px-7 sm:py-2 rounded-full text-xs sm:text-sm'>Logout</button>
+    <div className="navbar-container">
+      <img
+        className="navbar-logo"
+        src={assets.logo_epicmoments}
+        alt="Epic Moments Logo"
+      />
+      <div className="notification-wrapper">
+        <FiBell className="notification-bell" />
+        {newOrdersCount > 0 && (
+          <span className="notification-badge">{newOrdersCount}</span>
+        )}
+      </div>
+      <button onClick={() => setToken('')} className="logout-btn">
+        Logout
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
