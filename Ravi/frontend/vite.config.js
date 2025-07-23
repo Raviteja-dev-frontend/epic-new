@@ -7,6 +7,9 @@ export default defineConfig({
   preview: {
     port: process.env.PORT || 4173,
     host: true,
-    allowedHosts: ['epic-new-frontend.onrender.com'] // 👈 Add this line
+    allowedHosts: [
+      'myepicmoments.com',
+      'www.myepicmoments.com'
+    ]
   }
 })
