@@ -16,6 +16,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import SendOrderMail from './components/sendOrderMail.jsx'; // ✅ Capitalized
+import ScrollToTop from "./components/ScrollToTop";
 //Libraries
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,6 +25,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
+import { HelmetProvider } from 'react-helmet-async';
+import KeywordList from './pages/KeywordList.jsx'
+import KeywordPage from './pages/KeywordPage';
+
 
 
 const App = () => {
@@ -38,6 +45,9 @@ const App = () => {
 
   return (
     <div>
+      <HelmetProvider>
+
+      
         {/* Toast Notifications */}
       <ToastContainer />
 
@@ -45,6 +55,7 @@ const App = () => {
       <Navbar />
        {/* Main Content */}
       <div className="pt-20">
+        <ScrollToTop />
         <SearchBar />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -59,11 +70,16 @@ const App = () => {
           <Route path='/verify' element={<Verify />} />
           <Route path='/mainpage' element={<MainPage />} />
           <Route path='/sendOrderMail' element={<SendOrderMail />} />
+          <Route path='/privacypolicy' element={<PrivacyPolicy />} />
+<Route path='/termsandconditions' element={<TermsAndConditions />} />
+<Route path="/keywords" element={<KeywordList />} />
+<Route path="/keyword/:slug" element={<KeywordPage />} />
         </Routes>
       </div>
       
        {/* Footer */}
       <Footer />
+      </HelmetProvider>
     </div>
   )
 }
