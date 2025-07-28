@@ -12,26 +12,25 @@
 
 // export default connectDB;
 // config/mongodb.js
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const connectDB = async () => {
+  const mongoUri = process.env.MONGO_URL
+  if (!mongoUri) {
+    console.error("❌ MongoDB Connection Error: MONGO_URL is undefined. Check your .env or Render Environment Variables.")
+    process.exit(1)
+  }
+
   try {
-    const uri = process.env.MONGO_URL;
-    if (!uri) {
-      throw new Error('MONGO_URL is undefined. Check your .env or Render Environment Variables.');
-    }
-
-    await mongoose.connect(uri, {
+    await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useUnifiedTopology: true
     });
-
-    console.log('✅ MongoDB Connected!');
-  } catch (error) {
-    console.error('❌ MongoDB Connection Error:', error.message);
-    process.exit(1); // Exit process with failure
+    console.log("✅ MongoDB connected successfully")
+  } catch (err) {
+    console.error("❌ MongoDB connection failed:", err.message)
+    process.exit(1)
   }
 };
 
-export default connectDB;
-
+export default connectDB
