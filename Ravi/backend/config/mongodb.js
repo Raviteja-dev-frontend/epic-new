@@ -11,18 +11,27 @@
 // }
 
 // export default connectDB;
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-dotenv.config();
+// config/mongodb.js
+import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log("MongoDB Connected!");
+    const uri = process.env.MONGO_URL;
+    if (!uri) {
+      throw new Error('MONGO_URL is undefined. Check your .env or Render Environment Variables.');
+    }
+
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log('✅ MongoDB Connected!');
   } catch (error) {
-    console.error("MongoDB Error:", error.message);
-    process.exit(1);
+    console.error('❌ MongoDB Connection Error:', error.message);
+    process.exit(1); // Exit process with failure
   }
 };
 
 export default connectDB;
+
