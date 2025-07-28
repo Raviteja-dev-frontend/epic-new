@@ -11,9 +11,71 @@ import ProductSnicks from "./ProductSnicks.jsx";
 import BestSeller from "../components/BestSeller.jsx"
 import FAQ_Section from './FAQ_Section.jsx';
 import Slider_Comments from "./Slider_Comments.jsx"
+import { Helmet } from "react-helmet";
 function MainPage() {
   return (
     <div className="main-page">
+       <Helmet>
+        <title>Epic Moments | Personalized Gifts & Photography</title>
+        <meta
+          name="description"
+          content="Discover custom gifts, LED photo lamps, baby & wedding photography, and more. Epic Moments brings creativity to every celebration."
+        />
+        <meta name="keywords" content="custom gifts, photo lamps, baby photography, wedding photography, epic moments, personalized gifts India" />
+        <meta name="author" content="Epic Moments" />
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph (Facebook / LinkedIn) */}
+        <meta property="og:title" content="Epic Moments | Personalized Gifts & Photography" />
+        <meta
+          property="og:description"
+          content="Premium custom gifts and photography services. Shop personalized photo lamps, cushions, frames & more at Epic Moments."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://epicmoments.in" />
+        <meta property="og:image" content="https://epicmoments.in/assets/epicmoments-preview.jpg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Epic Moments | Personalized Gifts & Photography" />
+        <meta name="twitter:description" content="Celebrate moments with our custom-made gifts and photography services." />
+        <meta name="twitter:image" content="https://epicmoments.in/assets/epicmoments-preview.jpg" />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Store",
+              "name": "Epic Moments",
+              "url": "https://epicmoments.in",
+              "logo": "https://epicmoments.in/assets/logo_epicmoments.png",
+              "image": "https://epicmoments.in/assets/epicmoments-preview.jpg",
+              "description": "Epic Moments specializes in customized gifts like photo lamps, frames, and cushions with baby & wedding photography services.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Near Mudu Gullu, Opp. 3 Temples, Main Road",
+                "addressLocality": "Gullapalli",
+                "addressRegion": "Andhra Pradesh",
+                "postalCode": "522309",
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91 7989466939",
+                "contactType": "Customer Service"
+              },
+              "sameAs": [
+                "https://www.instagram.com/epicmoments007",
+                "https://www.facebook.com/share/1BuBjAUYk6/",
+                "https://wa.me/message/6NLUMW665UY7K1",
+                "https://www.youtube.com/@epicmoments0504",
+                "https://x.com/MomentsEpi55910"
+              ]
+            }
+          `}
+        </script>
+      </Helmet>
       <div className="gold-divider"></div>
       <div className='Screen-2_slideing'>
         <Slider />
