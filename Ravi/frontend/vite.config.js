@@ -7,9 +7,6 @@ export default defineConfig({
   preview: {
     port: process.env.PORT || 4173,
     host: true,
-    allowedHosts: [
-      'myepicmoments.com',
-      'www.myepicmoments.com'
-    ]
+    allowedHosts: ['myepicmoments.com', 'www.myepicmoments.com']
   }
 })
