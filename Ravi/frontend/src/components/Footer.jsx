@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import {
   FaFacebook,
@@ -7,18 +8,24 @@ import {
   FaYoutube,
   FaMapMarkerAlt,
   FaClock,
-  FaWhatsapp
+  FaWhatsapp,
+ 
 } from "react-icons/fa";
 import { Mail, Phone } from "lucide-react";
 import "./Footer.css";
 import { assets } from "../assets/assets.js";
+import { Helmet } from "react-helmet";
+
+
 
 const Footer = () => {
   const [categoryList, setCategoryList] = useState([]);
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("https://epic-new-backend.onrender.com/api/category");
+      const res = await axios.get(
+        "https://epic-new-backend.onrender.com/api/category"
+      );
       if (res.data.success) {
         setCategoryList(res.data.categories);
       }
@@ -33,6 +40,25 @@ const Footer = () => {
 
   return (
     <footer className="footer text-white">
+      <Helmet>
+  <meta name="author" content="Epic Moments" />
+  <meta name="copyright" content="© 2025 Design Dynasty" />
+  <meta name="robots" content="index, follow" />
+
+  {/* Open Graph Tags */}
+  <meta property="og:site_name" content="Epic Moments" />
+  <meta property="og:type" content="business.business" />
+  <meta property="og:title" content="Epic Moments - Personalized Gifts & Photography" />
+  <meta
+    property="og:description"
+    content="Epic Moments offers customized photo gifts, LED lamps, and professional photography services. Visit us in Gullapalli, Andhra Pradesh."
+  />
+  <meta
+    property="og:image"
+    content="https://epicmoments.in/assets/epicmoments-preview.jpg"
+  />
+  <meta property="og:url" content="https://epicmoments.in" />
+</Helmet>
       <div className="footer-container d-flex flex-wrap justify-content-around gap-2">
 
         {/* Logo + Social */}
@@ -43,6 +69,15 @@ const Footer = () => {
             <a href="https://www.instagram.com/epicmoments007" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
             <a href="https://www.youtube.com/@epicmoments0504" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
             <a href="https://wa.me/message/6NLUMW665UY7K1" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
+            <a
+    href="https://x.com/MomentsEpi55910"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Twitter"
+    title="Twitter"
+  >
+    <FaTwitter />
+  </a>
           </div>
         </div>
 
@@ -50,7 +85,10 @@ const Footer = () => {
         <div className="footer-section footer_about">
           <h2 className="footer-title">About</h2>
           <p>
-            EpicMoments creates premium, personalized gifts like LED lamps, photo frames, and pillows. Crafted from high-quality materials and tailored with your photos and messages, our products turn memories into meaningful keepsakes. Ideal for every occasion — create, personalize, and celebrate with EpicMoments.
+            EpicMoments creates premium, personalized gifts like LED lamps, photo frames, and pillows.
+            Crafted from high-quality materials and tailored with your photos and messages,
+            our products turn memories into meaningful keepsakes. Ideal for every occasion —
+            create, personalize, and celebrate with EpicMoments.
           </p>
         </div>
 
@@ -70,18 +108,18 @@ const Footer = () => {
         <div className="footer-section-pages">
           <h3 className="footer-title">Pages</h3>
           <ul className="list-disc pl-5 text-sm text-gray-300 flex flex-col gap-2">
-            <li>Home</li>
-            <li>About</li>
-            <li>Collections</li>
-            <li>Contact</li>
-            <li>Login</li>
+            <li><Link to="/" className="hover:text-white">Home</Link></li>
+            <li><Link to="/about" className="hover:text-white">About</Link></li>
+            <li><Link to="/collection" className="hover:text-white">Collections</Link></li>
+            <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+            <li><Link to="/login" className="hover:text-white">Login</Link></li>
+            <li><Link to="/privacypolicy" className="hover:text-white">Privacy Policy</Link></li>
+            <li><Link to="/termsandconditions" className="hover:text-white">Terms & Conditions</Link></li>
           </ul>
         </div>
 
-      
-
         {/* Address */}
-        <div className="footer-section footer_products">
+        <div className="footer-section">
           <h3 className="footer-title">Shop Address</h3>
           <div className="footer-address space-y-2 text-sm text-gray-300">
             <p className="flex items-center gap-2"><FaClock /> Mon - Sat: 9:00 AM – 8:00 PM</p>
@@ -89,25 +127,28 @@ const Footer = () => {
             <p className="flex items-center gap-2"><Mail size={18} /><a href="mailto:epicmoments27@gmail.com">epicmoments27@gmail.com</a></p>
             <p className="flex items-start gap-2">
               <FaMapMarkerAlt className="mt-1" />
-              <span>Near Mudu Gullu, Opp. 3 Temples,<br />Gullapalli, Main Road,<br />Andhra Pradesh - 522309</span>
+              <span>
+                Near Mudu Gullu, Opp. 3 Temples,<br />
+                Gullapalli, Main Road,<br />
+                Andhra Pradesh - 522309
+              </span>
             </p>
           </div>
         </div>
       </div>
 
       {/* Footer Bottom */}
-     <div className="footer-bottom text-center mt-8 border-t pt-4 text-sm text-gray-400">
-  <p>© 2025 Design Dynasty. All rights reserved.</p>
-  <p className="mt-1">
-    Designed and developed by  
-    <span className="text-white font-semibold ml-1">Design Dynasty</span><br />
-    Call us at: 
-    <a href="tel:+919182183823" className="text-white underline hover:text-gray-200 ml-1">
-      +91 9182183823, +91 9652680796
-    </a>
-  </p>
-</div>
-
+      <div className="footer-bottom text-center mt-8 border-t pt-4 text-sm text-gray-400">
+        <p>© 2025 Design Dynasty. All rights reserved.</p>
+        <p className="mt-1">
+          Designed and developed by  
+          <span className="text-white font-semibold ml-1">Design Dynasty</span><br />
+          Call us at:
+          <a href="tel:+919182183823" className="text-white underline hover:text-gray-200 ml-1">
+            +91 9182183823, +91 9652680796
+          </a>
+        </p>
+      </div>
     </footer>
   );
 };
