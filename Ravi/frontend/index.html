@@ -1,35 +1,109 @@
-<!doctype html>
-<html lang="en" className="scroll-smooth">
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <!-- ✅ Your full meta setup (as pasted) goes here -->
+    <!-- I’ll insert your <head> content as-is -->
+    
+    <!-- START: Your Meta and other tags -->
+    <!-- ✅ Basic Meta -->
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Epic Moments - Personalized Photo Gifts</title>
+    <meta name="title" content="Epic Moments - Personalized Gifts" />
+    <meta name="description" content="Buy customized photo gifts, LED lamps, photo frames, keychains, and more. Create memories with Epic Moments!" />
+    <meta name="keywords" content="custom gifts, personalized gifts, photo lamps, photo frames, epic moments, led photo gifts, gift ideas, photo printing, birthday gifts, anniversary gifts, romantic gifts, custom keychains, couple rings, printed mugs, pens, pillows, printing shop, marriage albums, photography services, LED gift, photo crystal, name printed rings" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Epic Moments" />
+    <meta name="language" content="English" />
+    <meta name="rating" content="General" />
+    <meta name="distribution" content="global" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="theme-color" content="#c91f29" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="canonical" href="https://myepicmoments.com/" />
+
+    <!-- ✅ Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://myepicmoments.com/" />
+    <meta property="og:title" content="Epic Moments - Personalized Gifts" />
+    <meta property="og:description" content="Buy customized photo gifts, LED lamps, photo frames, and more. Make memories with Epic Moments!" />
+    <meta property="og:image" content="https://myepicmoments.com/assets/social-preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Epic Moments" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- ✅ Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://myepicmoments.com/" />
+    <meta name="twitter:title" content="Epic Moments - Personalized Gifts" />
+    <meta name="twitter:description" content="Buy customized photo gifts, LED lamps, photo frames, and more." />
+    <meta name="twitter:image" content="https://myepicmoments.com/assets/social-preview.jpg" />
+    <meta name="twitter:site" content="@MomentsEpi55910" />
+    <meta name="twitter:creator" content="@MomentsEpi55910" />
+
+    <!-- ✅ Favicon & Icons -->
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="/assets/logo_epicmoments.jpg" />
+    <link rel="apple-touch-icon" href="/assets/logo_epicmoments.jpg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#c91f29" />
+    <meta name="msapplication-TileImage" content="/assets/logo_epicmoments.jpg" />
+
+    <!-- ✅ PWA Support -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Epic Moments" />
+
+    <!-- ✅ Security & Compatibility -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- ✅ Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "Epic Moments",
+        "url": "https://myepicmoments.com/",
+        "logo": "https://myepicmoments.com/assets/logo_epicmoments.jpg",
+        "image": "https://myepicmoments.com/assets/social-preview.jpg",
+        "description": "Buy customized photo gifts, LED lamps, photo frames, and more.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Near Mudu Gullu, Opp. 3 Temples, Gullapalli, Main Road",
+          "addressLocality": "Andhra Pradesh",
+          "postalCode": "522309",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://www.facebook.com/share/1BuBjAUYk6/",
+          "https://www.instagram.com/epicmoments007",
+          "https://www.youtube.com/@epicmoments0504",
+          "https://x.com/MomentsEpi55910"
+        ]
+      }
+    </script>
+
+    <!-- ✅ Performance -->
+    <link rel="preload" as="image" href="/assets/logo_epicmoments.jpg" />
+
+    <!-- ✅ Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- ✅ Bootstrap 5.3.3 CSS with correct integrity -->
+    <!-- ✅ Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
-    <link rel="icon" type="image/svg+xml" href="./src/./assets/logo_epicmoments.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Epic Moments</title>
+    <!-- END: Your Meta and other tags -->
   </head>
   <body>
     <div id="root"></div>
 
-    <!-- ✅ React entry point -->
+    <!-- ✅ Vite injects the React app here -->
     <script type="module" src="/src/main.jsx"></script>
-
-    <!-- ✅ Razorpay Script -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-    <!-- ✅ Bootstrap 5.3.3 JS with correct integrity -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
