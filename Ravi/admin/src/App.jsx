@@ -15,7 +15,7 @@ import Catagere from './pages/Catagere';
 import ManageCategory from './pages/ManageCategory';
 import EnquiryList from './pages/EnquiryList';
 import './admin_app.css';
-
+import KeywordManager from './components/KeywordManager';
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export const currency = '₹'; // Optional, update based on your app
 
@@ -60,6 +60,7 @@ const App = () => {
                   <Route path='/catagereAdd' element={<Catagere token={token} />} />
                   <Route path='/manageCategory' element={<ManageCategory token={token} />} />
                   <Route path='/enquiries' element={<EnquiryList />} />
+                  <Route path="/admin/keywords" element={<KeywordManager />} />
                 </Routes>
               </div>
             </div>
