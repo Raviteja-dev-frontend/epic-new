@@ -1,3 +1,4 @@
+// routes/keywordRoutes.js
 import express from 'express';
 import {
   generateKeyword,
@@ -5,12 +6,13 @@ import {
   deleteKeyword,
   getKeywordBySlug
 } from '../controllers/keywordController.js';
-import adminAuth from '../middleware/adminAuth.js'; 
+
 const router = express.Router();
 
-router.post('/generate', adminAuth, generateKeyword);
-router.get('/', adminAuth, getAllKeywords);
-router.delete('/:id',adminAuth, deleteKeyword);
-router.get("/:slug",adminAuth, getKeywordBySlug);
+// Public routes — no adminAuth
+router.post('/generate', generateKeyword);
+router.get('/', getAllKeywords);
+router.delete('/:id', deleteKeyword);
+router.get('/:slug', getKeywordBySlug);
 
 export default router;
