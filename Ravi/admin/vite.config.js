@@ -10,6 +10,6 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: parseInt(process.env.PORT) || 4173,
-    allowedHosts: ['epic-new-admin.onrender.com'], // ✅ Add your Render domain here
+    allowedHosts: ['admin.myepicmoments.com'], // ✅ Add your Render domain here
   },
 })
