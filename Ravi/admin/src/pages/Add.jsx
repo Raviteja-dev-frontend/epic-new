@@ -229,7 +229,7 @@ const Add = ({ token }) => {
       {/* Sizes */}
       <div className="flex flex-wrap gap-2 mt-4">
         <p className="w-full mb-1">Product Sizes</p>
-        {['Small', 'Medium', 'Large', 'Extra Large', 'XX Large'].map((size) => (
+        {['6 x 4', '6 x 8', '7 x 5', '8 x 10', '8 x 12', '10 x 10', '10 x 12','10 x 15', '11 x 11', '12 x 15 ', '12 x 18', '16 x 20', '16 x 24', '18 x 24'].map((size) => (
           <p
             key={size}
             onClick={() => toggleSize(size)}
