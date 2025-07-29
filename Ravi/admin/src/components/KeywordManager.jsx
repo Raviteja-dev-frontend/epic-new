@@ -8,33 +8,46 @@ const KeywordManager = () => {
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState([]);
 
-  const fetchKeywords = async () => {
+  const token = localStorage.getItem("adminToken");
+
+  const fetchAllKeywords = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/keyword`);
+      const response = await axios.get(`${backendUrl}/api/keyword`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       if (response.data.success) {
-        setKeywords(response.data.keywords);
+        setKeywords(response.data.keywords || []);
       } else {
         toast.error(response.data.message || "Failed to fetch keywords");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Fetch error:", error);
       toast.error("Error fetching keywords");
     }
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this keyword?")) return;
+    const confirmed = window.confirm("Are you sure you want to delete this keyword?");
+    if (!confirmed) return;
 
     try {
-      const response = await axios.delete(`${backendUrl}/api/keyword/${id}`);
+      const response = await axios.delete(`${backendUrl}/api/keyword/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       if (response.data.success) {
         toast.success("Keyword deleted");
-        fetchKeywords(); // Refresh list
+        fetchAllKeywords();
       } else {
-        toast.error(response.data.message || "Failed to delete");
+        toast.error(response.data.message || "Failed to delete keyword");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Delete error:", error);
       toast.error("Error deleting keyword");
     }
   };
@@ -42,33 +55,38 @@ const KeywordManager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !description) {
-      toast.error("Name and description required");
+    if (!name.trim() || !description.trim()) {
+      toast.error("Name and description are required");
       return;
     }
 
     try {
-      const response = await axios.post(`${backendUrl}/api/keyword/generate`, {
-        name,
-        description,
-      });
+      const response = await axios.post(
+        `${backendUrl}/api/keyword/generate`,
+        { name, description },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.data.success) {
-        toast.success("Keyword added");
+        toast.success("Keyword generated successfully");
         setName("");
         setDescription("");
-        fetchKeywords();
+        fetchAllKeywords();
       } else {
-        toast.error(response.data.message || "Failed to add keyword");
+        toast.error(response.data.message || "Failed to generate keyword");
       }
     } catch (error) {
-      console.error(error);
-      toast.error("Error adding keyword");
+      console.error("Submit error:", error);
+      toast.error("Error generating keyword");
     }
   };
 
   useEffect(() => {
-    fetchKeywords();
+    fetchAllKeywords();
   }, []);
 
   return (
@@ -98,23 +116,27 @@ const KeywordManager = () => {
 
       <h3 className="text-lg font-bold mt-8 mb-2">Existing Keywords</h3>
       <div className="space-y-3">
-        {keywords.map((k) => (
-          <div key={k._id} className="border p-3 rounded shadow">
-            <div className="flex justify-between items-center">
-              <h4 className="font-semibold">{k.keyword}</h4>
-              <button
-                onClick={() => handleDelete(k._id)}
-                className="text-red-500 hover:underline text-sm"
-              >
-                Delete
-              </button>
+        {Array.isArray(keywords) && keywords.length > 0 ? (
+          keywords.map((k) => (
+            <div key={k._id} className="border p-3 rounded shadow">
+              <div className="flex justify-between items-center">
+                <h4 className="font-semibold">{k.keyword}</h4>
+                <button
+                  onClick={() => handleDelete(k._id)}
+                  className="text-red-500 hover:underline text-sm"
+                >
+                  Delete
+                </button>
+              </div>
+              <div
+                className="mt-2 text-sm text-gray-700"
+                dangerouslySetInnerHTML={{ __html: k.content }}
+              />
             </div>
-            <div
-              className="mt-2 text-sm text-gray-700"
-              dangerouslySetInnerHTML={{ __html: k.content }}
-            />
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-sm text-gray-500">No keywords found.</p>
+        )}
       </div>
     </div>
   );
