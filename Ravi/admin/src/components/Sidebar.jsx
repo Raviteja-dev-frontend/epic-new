@@ -47,12 +47,12 @@ const Sidebar = () => {
 
         <NavLink className={baseLinkClass} to="/catagereAdd">
           <FaThLarge className='w-5 h-5' />
-          <p className='hidden md:block'>Catagere Image</p>
+          <p className='hidden md:block'>Category Image</p>
         </NavLink>
 
         <NavLink className={baseLinkClass} to="/catagereList">
           <FaThList className='w-5 h-5' />
-          <p className='hidden md:block'>Catagere List</p>
+          <p className='hidden md:block'>Category List</p>
         </NavLink>
 
         <NavLink className={baseLinkClass} to="/manageCategory">
